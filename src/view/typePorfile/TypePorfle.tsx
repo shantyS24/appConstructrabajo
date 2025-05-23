@@ -45,7 +45,7 @@ export const TypePorfleScreen = () => {
                     <Image 
                     style = {styles.imgTypePorfile}
                     source={require('../../../assets/employerIcon.png')}/>
-                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}>
+                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => navigation.navigate('RegisterScreen')}>
                         <Text style={styles.textUserSolicitante}>
                             Usuario Trabajador
                         </Text>
