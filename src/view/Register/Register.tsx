@@ -75,6 +75,11 @@ export const RegisterScreen = () => {
                     value={number}
                 />
             </View>
+            <View style = {styles.viewBotonNext}>
+                <TouchableOpacity style={styles.botonSiguiente} onPress={() => navigation.navigate('RegisterScreen')}>
+                    <Text style={styles.textoBoton}>Siguiente</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
@@ -125,5 +130,30 @@ const styles = StyleSheet.create({
     label: {
         margin: 8,
     },
+    botonSiguiente: {
+        width:350,
+        height:60,
+        backgroundColor: MyColors.primary,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        elevation: 6,
+        //IOS sombra
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.35,
+        shadowRadius: 3.84,
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    textoBoton: {
+        color: 'white',
+        fontSize: 16,
+        textAlign: 'center',
+        fontWeight:500,
+    },
+    viewBotonNext:{
+        position: 'absolute',
+        bottom: 70,
+    }
 
 });
