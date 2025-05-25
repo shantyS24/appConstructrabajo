@@ -5,24 +5,24 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../App';
 
-export const TypePorfleScreen = () => {
+export const TypePorfileScreen = () => {
 
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();//Funciona para poder navegar de una pagina a otra
 
     return (
-        <View style={styles.container}>
-            <View style= {styles.circuloFigures}>
-                <View style={styles.circulo}></View>
-                <View style={styles.circulo2}></View>
+        <View style={styles.container} /**Contenedor Principal */ >
+            <View style= {styles.circuloFigures} /*Contiene los circulos de la parte superior derecha*/>
+                <View style={styles.circulo} /**Circulo con color */></View>
+                <View style={styles.circulo2}/**linea circular */></View>
             </View>
             <View style={styles.viewBack}>
-                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
-                    <Image 
+                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')} /**Boton para regresar al home */>
+                    <Image /**La imagen de la flechita */
                     style = {styles.imgBack}
                     source={require('../../../assets/back.png')}/>
                 </TouchableOpacity>
             </View>
-            <View style={styles.headerText}>
+            <View style={styles.headerText}/**Contenedor de los titulos */>
                 <Text style={styles.titulo}>
                     Tipo de Perfil
                 </Text>
@@ -30,32 +30,32 @@ export const TypePorfleScreen = () => {
                     {'Selecciona el tipo de perfil para constructrabajo'}
                 </Text>
             </View>
-            <View style={styles.contenedorOptions}> 
+            <View style={styles.contenedorOptions} /**Contenedor para las opciones de tipo de registro */> 
                 <View style={styles.viewTypePorfile}>
-                    <Image 
+                    <Image /**Imagen para usuario solicitante */
                     style = {styles.imgTypePorfile}
                     source={require('../../../assets/userIcon.png')}/>
-                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}>
+                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')} /**Boton para continuar al registro */>
                         <Text style={styles.textUserSolicitante}>
                             Usuario Solicitante
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewTypePorfile}>
-                    <Image 
+                    <Image /**Imagen para usuario Trabajador */
                     style = {styles.imgTypePorfile}
                     source={require('../../../assets/employerIcon.png')}/>
-                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => navigation.navigate('RegisterScreen')}>
+                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => navigation.navigate('RegisterScreen')}  /**Boton para continuar al registro */>
                         <Text style={styles.textUserSolicitante}>
                             Usuario Trabajador
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewTypePorfile}>
-                    <Image 
+                    <Image /**Imagen para Ferreteria */
                     style = {styles.imgTypePorfile}
                     source={require('../../../assets/ferreteria.png')}/>
-                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}>
+                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}  /**Boton para continuar al registro */>
                         <Text style={styles.textUserSolicitante}>
                             Ferreteria / Almacen
                         </Text>
@@ -129,6 +129,10 @@ const styles = StyleSheet.create({
         left: 20,
         top: 70,
     },
+    imgBack:{
+        width: 40,
+        height: 40,
+    },
     headerText:{
         position:'absolute',
         top: 120,
@@ -143,10 +147,6 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 16,
         fontWeight: 400,
-    },
-    imgBack:{
-        width: 40,
-        height: 40,
     },
     contenedorOptions:{
         marginTop: 200,

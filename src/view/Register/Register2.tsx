@@ -1,21 +1,18 @@
 import React from 'react'; 
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native';
-import { MyColors } from '../../theme/AppTheme'; 
+import { MyColors } from '../../theme/AppTheme';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../App';
-import Checkbox from 'expo-checkbox';
+import { RootStackParamList } from '../../../App'; 
 
-export const RegisterScreen = () => {
-    // Funciona para poder navegar de una pagina a otra
+export const Register2Screen = () => {
+
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
     return (
-        // Contenedor Principal
         <ScrollView contentContainerStyle={styles.container}>
             {/* Contenedor para el botón de regresar */}
             <View style={styles.viewBack}>
-                {/* Botón para regresar: se goBack() para volver */}
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     {/* La imagen de la flechita */}
                     <Image
@@ -25,65 +22,57 @@ export const RegisterScreen = () => {
                 </TouchableOpacity>
             </View>
 
-            {/* Contenedor del título y subtítulo */}
+            {/* Contenedor del título */}
             <View style={styles.headerText}>
                 {/* Título */}
-                <Text style={styles.titulo}>Registro</Text>
-                {/* Subtítulo */}
-                <Text style={styles.subtitulo}>
-                    Bienvenido, haz parte de Constructrabajo
-                </Text>
+                <Text style={styles.titulo}>Constructrabajo</Text>
             </View>
 
             {/* Contenedor del formulario */}
             <View style={styles.formContainer}>
-                {/* Entrada de texto para Nombres */}
+                {/* Entrada de texto para Número Telefónico */}
                 <TextInput
                     style={styles.input}
-                    placeholder="Nombres"
-                />
-                {/* Entrada de texto para Apellidos */}
-                <TextInput
-                    style={styles.input}
-                    placeholder="Apellidos"
-                />
-
-                <Text style={styles.sectionTitle}>Tipo de documento de Identidad</Text>
-                {/* Checkbox para el tipo de documento */}
-                <View style={styles.contCheckboxs}>
-                    <View style={styles.checkboxRow}>
-                        <Checkbox style={styles.checkbox} />
-                        <Text style={styles.label}>C.C</Text>
-                    </View>
-                    <View style={styles.checkboxRow}>
-                        <Checkbox style={styles.checkbox} />
-                        <Text style={styles.label}>C.E</Text>
-                    </View>
-                    <View style={styles.checkboxRow}>
-                        <Checkbox style={styles.checkbox} />
-                        <Text style={styles.label}>PPT</Text>
-                    </View>
-                </View>
-
-                {/* Entrada para Número de Documento */}
-                <TextInput
-                    style={styles.input}
-                    placeholder="Número de Identidad"
+                    placeholder="Número Telefónico"
                     keyboardType='numeric'
                 />
-                {/* Entrada para Dirección */}
+                {/* Entrada de texto para Correo Electrónico */}
                 <TextInput
                     style={styles.input}
-                    placeholder="Dirección de residencia"
+                    placeholder="Correo Electrónico"
+                    keyboardType='email-address'
+                />
+                {/* Entrada para Nueva Contraseña */}
+                <TextInput
+                    style={styles.input}
+                    placeholder="Nueva Contraseña"
+                    secureTextEntry={true} // Oculta el texto de la contraseña
+                />
+                {/* Entrada para Validar Contraseña */}
+                <TextInput
+                    style={styles.input}
+                    placeholder="Confirmar Contraseña" 
+                    secureTextEntry={true} // Oculta el texto de la contraseña
+                />
+                {/* Entrada para Referencia Personal */}
+                <TextInput
+                    style={styles.input}
+                    placeholder="Referencia Personal"
+                />
+                {/* Entrada para Numero de Contacto */}
+                <TextInput
+                    style={styles.input}
+                    placeholder="Número de Contacto"
+                    keyboardType='numeric' 
                 />
             </View>
 
             {/* Contenedor para botón de Siguiente */}
             <View style={styles.botonContainerNext}>
-                {/* Botón que permite paginar a la siguiente pantalla*/}
+                {/* Botón que permite paginar a la siguiente pantalla */}
                 <TouchableOpacity
                     style={styles.botonSiguiente}
-                    onPress={() => navigation.navigate('Register2Screen')}
+                    onPress={() => navigation.navigate('Register3Screen')}
                 >
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </TouchableOpacity>
@@ -112,24 +101,17 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
     },
-    //!Contenedor para los titulos
+    //!Contenedor para el título
     headerText: {
         width: '90%',
         alignItems: 'center', 
-        marginBottom: 30,
+        marginBottom: 30, 
     },
     //*Titulo
     titulo: {
         color: MyColors.primary,
         fontSize: 28, 
         fontWeight: 'bold',
-        marginBottom: 5, 
-    },
-    //*Subtitulo
-    subtitulo: { 
-        fontSize: 16,
-        fontWeight: '400', 
-        textAlign: 'center', 
     },
     //!Contenedor para el formulario
     formContainer: { 
@@ -142,50 +124,13 @@ const styles = StyleSheet.create({
     input: {
         height: 60, 
         width: '100%', 
-        borderRadius: 10,
         fontSize: 16,
         paddingHorizontal: 20,
+        borderRadius: 10,
         backgroundColor: MyColors.placeholder, 
-        color: 'black', 
-    },
-    //!Contenedor de los Checkbox (Tipo de documento)
-    contCheckboxs: {
-        width: '90%',
-        flexDirection: 'row',
-        justifyContent: 'space-around', 
-        alignItems: 'center',
-        marginBottom: 10, 
-    },
-    //*Contenedor de una fila de checkbox (para agrupar Checkbox y Text)
-    checkboxRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    //?Checkbox
-    checkbox: {
-        width: 20,
-        height: 20,
-        marginRight: 8,
-        borderRadius: 4,
-        borderWidth: 1.5,
-        borderColor: 'black', 
-    },
-    //*Texto del Checkbox 
-    label: {
-        fontSize: 15,
         color: 'black',
     },
-    //*Título de sección para checkboxes 
-    sectionTitle: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: 'black',
-        marginBottom: 5,
-        marginTop: 10,
-        width: '90%', 
-        textAlign: 'left',
-    },
-    //!Contenedor del botón 
+    //!Contenedor del botón
     botonContainerNext: { 
         width: '90%', 
         alignItems: 'center', 
@@ -199,13 +144,13 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
-        elevation: 6, 
+        elevation: 6, // Sombra para Android
         shadowColor: '#000', // Sombra para iOS
         shadowOffset: { width: 0, height: 6 },
         shadowOpacity: 0.35,
         shadowRadius: 3.84,
     },
-    //*Texto del Boton
+    //*Texto del boton
     textoBoton: {
         color: 'white',
         fontSize: 18, 

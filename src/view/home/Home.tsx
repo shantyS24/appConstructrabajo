@@ -10,49 +10,54 @@ export const HomeScreen = () => {
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
     return (
-        <View style={styles.container}>
-            <View style= {styles.circuloFigures}>
-                <View style={styles.circulo}></View>
-                <View style={styles.circulo2}></View>
+        <View style={styles.container}/*Contenedor Principal*/> 
+            <View style= {styles.circuloFigures} /*Contiene los circulos de la parte superior derecha*/>
+                <View style={styles.circulo} /**Circulo con color */></View>
+                <View style={styles.circulo2}/**linea circular */></View>
             </View>
 
-            <Text style={styles.titulo}>
+            <Text style={styles.titulo}/** Titulo  Principal */>
                 Trabaja con Constructrabajo
             </Text>
 
-            <Text style={styles.texto}>
+            <Text style={styles.texto}/**Parrafo despues del titulo */>
                 {'Dame el pan de cada dia \n muchoooo mas texto'}
             </Text>
 
-            <View style= {styles.botones}>
-                <TouchableOpacity style={styles.botonIngreso} onPress={() => alert('Pere que aun esta en desarrollo')}>
+            <View style= {styles.botones} /**Contenedor para los botones */>
+                <TouchableOpacity style={styles.botonIngreso} onPress={() => alert('Pere que aun esta en desarrollo')}
+                    /**Boton de Ingresar */>
                     <Text style={styles.textoBoton}>Ingresar</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.botonRegistro} onPress={() => navigation.navigate('TypePorfleScreen')}>
+                <TouchableOpacity style={styles.botonRegistro} onPress={() => navigation.navigate('TypePorfileScreen')}
+                    /**Boton de Registro */>
                     <Text style={styles.textoBotonR}>Registrarse</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.cuadroFigures}>
-                <View style={styles.cuadro}></View>
-                <View style={styles.cuadro2}></View>
+            <View style={styles.cuadroFigures} /**Contenedor de Lineas de Cuadros */>
+                <View style={styles.cuadro} /**Cuadro o rectangulo */></View>
+                <View style={styles.cuadro2}/**Cuadro girado a 35 grados */></View>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    //!Contenedor principal
     container: {
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
+    //!Contenedor Figuras
         circuloFigures: {
         position: 'absolute',
         top: 0,
         right: 0,
     },
+    //?Circulo rellenado
     circulo: {
         position: 'absolute',
         top: 0,
@@ -63,7 +68,8 @@ const styles = StyleSheet.create({
         backgroundColor: MyColors.primary,
         elevation: 1,
         shadowColor: '#626f47'
-    },  
+    },
+    //?Lineas de circulo grises
     circulo2: {
         position: 'absolute',
         top: 0,
@@ -75,22 +81,26 @@ const styles = StyleSheet.create({
         borderWidth: 3,
 
     },
+    //*Titulo Principal
     titulo: {
         color: MyColors.primary,
         fontSize: 24,
         fontWeight: 'bold',
     },
+    //*Parrafo
     texto: {
         marginTop: '40%',
         color: 'black',
         fontSize: 16,
         fontWeight: 400,
     },
+    //!Contenedor de los botones
     botones: {
         flexDirection: 'row',
         position: 'absolute',
         bottom: 100,
     },
+    //?Boton de Ingreso
     botonIngreso: {
         margin: 20,
         backgroundColor: MyColors.primary,
@@ -104,12 +114,14 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.35,
         shadowRadius: 3.84,
     },
+    //*Texto de Ingreso
     textoBoton: {
         color: 'white',
         fontSize: 16,
         textAlign: 'center',
         fontWeight:500,
     },
+    //?Boton de Registro
     botonRegistro: {
         margin: 20,
         backgroundColor: 'white',
@@ -126,23 +138,27 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.45,
         shadowRadius: 3.84,
     },
+    //*Texto de registro
     textoBotonR: {
         color: 'black',
         fontSize: 16,
         textAlign: 'center',
         fontWeight:500,
     },
+    //!Contenedor de los Cuadros
     cuadroFigures: {
         position: 'absolute',
         bottom: 0,
         left: 0,
     },
+    //?Linea de rectangulo
     cuadro: {
         width:100,
         height: 250,
         borderColor:  MyColors.borderFigures,
         borderWidth: 3,
     },
+    //?Linea de cuadro girado
     cuadro2: {
         position: 'absolute',
         bottom: 20,
