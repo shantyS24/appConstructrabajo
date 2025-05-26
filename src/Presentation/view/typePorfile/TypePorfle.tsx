@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import { MyColors } from '../../theme/AppTheme';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../App';
+import { RootStackParamList } from '../../../../App';
 
 export const TypePorfleScreen = () => {
 
@@ -19,7 +19,7 @@ export const TypePorfleScreen = () => {
                 <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
                     <Image 
                     style = {styles.imgBack}
-                    source={require('../../../assets/back.png')}/>
+                    source={require('../../../../assets/back.png')}/>
                 </TouchableOpacity>
             </View>
             <View style={styles.headerText}>
@@ -34,30 +34,30 @@ export const TypePorfleScreen = () => {
                 <View style={styles.viewTypePorfile}>
                     <Image 
                     style = {styles.imgTypePorfile}
-                    source={require('../../../assets/userIcon.png')}/>
+                    source={require('../../../../assets/userIcon.png')}/>
                     <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}>
                         <Text style={styles.textUserSolicitante}>
-                            Usuario Solicitante
+                            Solicitante
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewTypePorfile}>
                     <Image 
                     style = {styles.imgTypePorfile}
-                    source={require('../../../assets/employerIcon.png')}/>
+                    source={require('../../../../assets/employerIcon.png')}/>
                     <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => navigation.navigate('RegisterScreen')}>
                         <Text style={styles.textUserSolicitante}>
-                            Usuario Trabajador
+                            Trabajador
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewTypePorfile}>
                     <Image 
                     style = {styles.imgTypePorfile}
-                    source={require('../../../assets/ferreteria.png')}/>
+                    source={require('../../../../assets/ferreteria.png')}/>
                     <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}>
                         <Text style={styles.textUserSolicitante}>
-                            Ferreteria / Almacen
+                            Ferreteria
                         </Text>
                     </TouchableOpacity>
                 </View>
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     },
     headerText:{
         position:'absolute',
-        top: 120,
+        top: 220,
         alignItems: 'center',
     },
     titulo: {
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
         marginTop: 200,
     },
     viewTypePorfile: {
-        margin:30,
+        margin:20,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -164,18 +164,20 @@ const styles = StyleSheet.create({
     botonUserSolicitante: {
         margin: 20,
         marginLeft:50,
-        width: 150,
-        height:80,
+        width: 200,
+        height: 50,
         backgroundColor: MyColors.primary,
-        opacity: .6,
         paddingHorizontal: 25,
         justifyContent: 'center',
         borderRadius: 15,
         elevation: 6,
     },
+
     textUserSolicitante:{
         fontSize: 18,
         fontWeight: 500,
         color: MyColors.borderFigures,
+        textAlign: 'center'
     },
+
 });

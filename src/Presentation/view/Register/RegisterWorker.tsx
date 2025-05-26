@@ -3,86 +3,99 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-native
 import { MyColors } from '../../theme/AppTheme';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../App';
-import Checkbox from 'expo-checkbox';
+import { RootStackParamList } from '../../../../App';
+import { Picker } from '@react-native-picker/picker';
+import useViewModel from './ViewModel';
 
 
 
+export const RegisterScreenWorker = () => {
 
-export const RegisterScreen = () => {
-    const [text, onChangeText] = React.useState('');
-    const [number, onChangeNumber] = React.useState('');
-    const [isChecked, setChecked] = useState(false);
+    const { nombreTrabajador, apellidoTrabajador, correoTrabajdor, docuTrabajador, selectedDocuTra, onChange } = useViewModel();
 
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
     return (
+
         <View style={styles.container}>
             <View style={styles.headerText}>
+
                 <Text style={styles.titulo}>
                     Registro
                 </Text>
+
                 <Text style={styles.texto}>
                     {'Bienvenido, haz parte de Constructrabajo  '}
                 </Text>
+
             </View>
+
             <View style={styles.contForm}>
+                
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeText}
                     placeholder="Nombres"
-                    value={text}
+                    keyboardType='default'
+                    value={ nombreTrabajador }
+                    onChangeText={text => onChange('nombreTrabajador', text)}
                 />
+
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeText}
                     placeholder="Apellidos"
-                    value={text}
+                    value={apellidoTrabajador}
+                    onChangeText={text => onChange('apellidoTrabajador', text)}
+                    keyboardType='default'
                 />
-                <Text>Tipo de documento de Identidad</Text>
-                <View style={styles.contCheckboxs}>
-                    <Checkbox
-                        value={isChecked}
-                        onValueChange={setChecked}
-                        style={styles.checkbox}
-                    />
-                    <Text style={styles.label}>C.C</Text>
-                    <Checkbox
-                        value={isChecked}
-                        onValueChange={setChecked}
-                        style={styles.checkbox}
-                    />
-                    <Text style={styles.label}>C.E</Text>
-                    <Checkbox
-                        value={isChecked}
-                        onValueChange={setChecked}
-                        style={styles.checkbox}
-                    />
-                    <Text style={styles.label}>PPT</Text>
-                </View>
+                
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeText}
-                    placeholder="Correo Electronico"
+                    placeholder='Correo Electronico'
                     keyboardType='email-address'
-                    value={text}
+                    secureTextEntry={true}
+                    value={correoTrabajdor}
+                    onChangeText={text => onChange('correoTrabajdor', text)}
                 />
+                
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeNumber}
                     placeholder="Numero de Identidad"
                     keyboardType='numeric'
-                    value={number}
+                    value={docuTrabajador}
+                    onChangeText={text => onChange('docuTrabajador', text)}
                 />
+
+                <Text>Tipo de documento⬇️ </Text>
+                <Picker
+                    style={styles.inputIOS}
+                    selectedValue={selectedDocuTra}
+                    onValueChange={(itemValue) => onChange('selectedDocuTra', itemValue)}
+                    >
+                    <Picker.Item label="CC" value="CC" />
+                    <Picker.Item label="CE" value="CE" />
+                    <Picker.Item label="PPT" value="PPT" />
+                </Picker>
+
             </View>
+
             <View style = {styles.viewBotonNext}>
-                <TouchableOpacity style={styles.botonSiguiente} onPress={() => navigation.navigate('RegisterScreen')}>
+                <TouchableOpacity style={styles.botonSiguiente} onPress={ () => {
+                    console.log('Nombres:' + nombreTrabajador);
+                    console.log('Apellidos:' + apellidoTrabajador);
+                    console.log('Email:' + correoTrabajdor);
+                    console.log('DocuIdentidad:' + docuTrabajador);
+                    console.log('TipoDeDocu:' + selectedDocuTra );
+                }}>
                     <Text style={styles.textoBoton}>Siguiente</Text>
                 </TouchableOpacity>
             </View>
+
         </View>
     );
 }
+
+
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -111,12 +124,12 @@ const styles = StyleSheet.create({
         gap:20,
     },
     input: {
-    height: 65,
-    width:350,
-    borderRadius: 10,
-    fontSize: 16,
-    paddingHorizontal:20,
-    backgroundColor:MyColors.placeholder,
+        height: 55,
+        width:350,
+        borderRadius: 10,
+        fontSize: 16,
+        paddingHorizontal:20,
+        backgroundColor:MyColors.placeholder,
     },
     contCheckboxs:{
         flexDirection:'row',
@@ -154,6 +167,18 @@ const styles = StyleSheet.create({
     viewBotonNext:{
         position: 'absolute',
         bottom: 70,
-    }
+    },
+    inputIOS: {
+        fontSize: 16,
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        borderWidth: 1,
+        borderColor: 'gray',
+        borderRadius: 8,
+        color: 'black',
+        backgroundColor: '#fff', // ✅ MUY IMPORTANTE
+        zIndex: 10,
+    },
+            
 
 });
