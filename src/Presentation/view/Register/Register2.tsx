@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, ScrollView 
 import { MyColors } from '../../theme/AppTheme';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../App'; 
+import { RootStackParamList } from '../../../../App'; 
 
 export const Register2Screen = () => {
 
@@ -17,7 +17,7 @@ export const Register2Screen = () => {
                     {/* La imagen de la flechita */}
                     <Image
                         style={styles.imgBack}
-                        source={require('../../../assets/back.png')}
+                        source={require('../../../../assets/back.png')}
                     />
                 </TouchableOpacity>
             </View>

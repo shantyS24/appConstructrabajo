@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, ScrollView 
 import { MyColors } from '../../theme/AppTheme';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../App';
+import { RootStackParamList } from '../../../../App';
 import Checkbox from 'expo-checkbox';
 
 export const Register3Screen = () => {
@@ -16,7 +16,7 @@ export const Register3Screen = () => {
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image
                         style={styles.imgBack}
-                        source={require('../../../assets/back.png')}
+                        source={require('../../../../assets/back.png')}
                     />
                 </TouchableOpacity>
             </View>

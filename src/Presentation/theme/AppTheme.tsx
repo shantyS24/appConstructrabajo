@@ -6,5 +6,4 @@ export const MyColors = {
     third: '#fefae0', //Amarillito tirando a beige
     borderFigures: '#F3F5FD', //AzulGris
     placeholder: '#F1F4FF' //AzulClaro
-
 }

@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import { MyColors } from '../../theme/AppTheme';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../App';
+import { RootStackParamList } from '../../../../App';
 
-export const TypePorfileScreen = () => {
+export const TypeProfileScreen = () => {
 
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();//Funciona para poder navegar de una pagina a otra
 
@@ -19,7 +19,7 @@ export const TypePorfileScreen = () => {
                 <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')} /**Boton para regresar al home */>
                     <Image /**La imagen de la flechita */
                     style = {styles.imgBack}
-                    source={require('../../../assets/back.png')}/>
+                    source={require('../../../../assets/back.png')}/>
                 </TouchableOpacity>
             </View>
             <View style={styles.headerText}/**Contenedor de los titulos */>
@@ -34,30 +34,35 @@ export const TypePorfileScreen = () => {
                 <View style={styles.viewTypePorfile}>
                     <Image /**Imagen para usuario solicitante */
                     style = {styles.imgTypePorfile}
-                    source={require('../../../assets/userIcon.png')}/>
-                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')} /**Boton para continuar al registro */>
+                    source={require('../../../../assets/userIcon.png')}/>
+
+                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}>
+
                         <Text style={styles.textUserSolicitante}>
-                            Usuario Solicitante
+                            Solicitante
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewTypePorfile}>
                     <Image /**Imagen para usuario Trabajador */
                     style = {styles.imgTypePorfile}
-                    source={require('../../../assets/employerIcon.png')}/>
-                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => navigation.navigate('RegisterScreen')}  /**Boton para continuar al registro */>
+                    source={require('../../../../assets/employerIcon.png')}/>
+                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => navigation.navigate('RegisterScreenWorker')}>
+
                         <Text style={styles.textUserSolicitante}>
-                            Usuario Trabajador
+                            Trabajador
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewTypePorfile}>
                     <Image /**Imagen para Ferreteria */
                     style = {styles.imgTypePorfile}
-                    source={require('../../../assets/ferreteria.png')}/>
-                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}  /**Boton para continuar al registro */>
+
+                    source={require('../../../../assets/ferreteria.png')}/>
+                    <TouchableOpacity style={styles.botonUserSolicitante} onPress={() => alert('Pere que aun esta en desarrollo')}>
+
                         <Text style={styles.textUserSolicitante}>
-                            Ferreteria / Almacen
+                            Ferreteria
                         </Text>
                     </TouchableOpacity>
                 </View>
@@ -113,6 +118,7 @@ const styles = StyleSheet.create({
         height: 250,
         borderColor:  MyColors.borderFigures,
         borderWidth: 3,
+        zIndex: 1,
     },
     cuadro2: {
         position: 'absolute',
@@ -123,6 +129,7 @@ const styles = StyleSheet.create({
         borderColor: MyColors.borderFigures,
         borderWidth: 3,
         transform: [{ rotate: '35deg' }],
+        zIndex: 1,
     },
     viewBack: {
         position: 'absolute',
@@ -135,7 +142,7 @@ const styles = StyleSheet.create({
     },
     headerText:{
         position:'absolute',
-        top: 120,
+        top: 220,
         alignItems: 'center',
     },
     titulo: {
@@ -152,7 +159,7 @@ const styles = StyleSheet.create({
         marginTop: 200,
     },
     viewTypePorfile: {
-        margin:30,
+        margin:20,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -160,22 +167,25 @@ const styles = StyleSheet.create({
     imgTypePorfile:{
         width: 80,
         height: 80,
+        zIndex: 2,
     },
     botonUserSolicitante: {
         margin: 20,
         marginLeft:50,
-        width: 150,
-        height:80,
+        width: 200,
+        height: 50,
         backgroundColor: MyColors.primary,
-        opacity: .6,
         paddingHorizontal: 25,
         justifyContent: 'center',
         borderRadius: 15,
         elevation: 6,
     },
+
     textUserSolicitante:{
         fontSize: 18,
         fontWeight: 500,
         color: MyColors.borderFigures,
+        textAlign: 'center'
     },
+
 });
